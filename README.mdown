@@ -4,3 +4,6 @@
 ### Developer
     - Geoffr Su
     - ChenYu Hsu
+
+### Log
+	- 2012/01/05 Added Create Account/Login Function.

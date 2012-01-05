@@ -1,1 +1,39 @@
-Hello
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript">
+			onload=function(){
+				var loginForm=document.getElementById('login');
+				loginForm.onsubmit=function(){
+					var formData='{'+
+									'"account":'+'"'+loginForm['account'].value.toLowerCase()+'", '+
+									'"passwd":' +'"'+loginForm['pass'].value+'"'+
+				 				  '}';
+				 				  
+					$.ajax(
+						{
+							url: '/login',
+							type: 'POST',
+							data: formData,
+							dataType: "json",
+							error: function(msg){
+								console.log(msg);
+							},
+							success: function(msg){
+								console.log(msg);
+							}
+						}
+					);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<form id="login" action="" method="POST">
+			Account:<input type="text" name="account" /><br />
+			Password:<input type="text" name="pass" />
+			<input type="submit" />
+		</form>
+	</body>
+</html>

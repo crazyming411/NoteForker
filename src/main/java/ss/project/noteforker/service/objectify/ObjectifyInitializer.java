@@ -4,6 +4,8 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import ss.project.noteforker.mvc.model.domain.*;
+
 import com.googlecode.objectify.ObjectifyService;
 
 /**
@@ -15,7 +17,7 @@ public final class ObjectifyInitializer implements ServletContextListener {
 	@Override
 	public void contextInitialized(final ServletContextEvent sce) {
 		//ObjectifyService.register(Entity.class);
-		
+		ObjectifyService.register(User.class);
 	}
 
 	@Override
