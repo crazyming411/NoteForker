@@ -10,21 +10,21 @@
           <string>WEB-INF/web.xml</string>
           <string>WEB-INF/classes/log4j.properties</string>
           <string>WEB-INF/classes/logging.properties</string>
-          <string>WEB-INF/classes/ss/project/noteforker/mvc/control/LoginController.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/mvc/control/ResourceController.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/mvc/control/UserController.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/mvc/model/business/IndexParser.class</string>
-          <string>WEB-INF/classes/ss/project/noteforker/mvc/model/business/LoginDao.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/mvc/model/business/UserDao.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/mvc/model/domain/File.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/mvc/model/domain/Folder.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/mvc/model/domain/User.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/mvc/ModelAwareServlet.class</string>
+          <string>WEB-INF/classes/ss/project/noteforker/mvc/view/UserJsonView.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/service/httpretrieve/HttpRetriever.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/service/json/JsonService.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/service/json/JsonServiceException.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/service/objectify/ObjectifyInitializer.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/service/ServiceException.class</string>
+          <string>WEB-INF/classes/ss/project/noteforker/service/session/HttpSessionCollector.class</string>
           <string>WEB-INF/lib/persistence-api-1.0.jar</string>
           <string>WEB-INF/lib/appengine-api-1.0-sdk-1.6.0.jar</string>
           <string>WEB-INF/lib/objectify-3.0.jar</string>

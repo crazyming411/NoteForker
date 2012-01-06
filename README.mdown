@@ -7,3 +7,7 @@
 
 ### Log
 	- 2012/01/05 Added Create Account/Login Function.
+	-         06 Modified User MVC to get the session controll works.
+	
+### Note-worthy
+	- 2012/01/06 If you want the $.ajax work correctly with JAVA Servlet, insert `resp.setHeader("Access-Control-Allow-Origin", "*");` in your MVC-View method.

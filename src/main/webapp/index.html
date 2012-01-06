@@ -1,30 +1,50 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="UTF-8" />
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 		<script type="text/javascript">
 			onload=function(){
 				var loginForm=document.getElementById('login');
-				loginForm.onsubmit=function(){
+				var sendBtn=document.getElementById('send');
+				sendBtn.onclick=function(){
 					var formData='{'+
-									'"account":'+'"'+loginForm['account'].value.toLowerCase()+'", '+
-									'"passwd":' +'"'+loginForm['pass'].value+'"'+
+									'"account":'+'"'+encodeURIComponent(loginForm['account'].value.toLowerCase())+'", '+
+									'"passwd":' +'"'+encodeURIComponent(loginForm['pass'].value)+'"'+
 				 				  '}';
-				 				  
+				 			  
 					$.ajax(
 						{
-							url: '/login',
+							url: '/user',
 							type: 'POST',
+							headers: {"usage":"login"},
+							contentType: "application/json; charset=utf-8",
 							data: formData,
 							dataType: "json",
-							error: function(msg){
-								console.log(msg);
-							},
 							success: function(msg){
 								console.log(msg);
+							},
+							error: function(response){
+								console.log(response.responseText);
 							}
 						}
 					);
+				}
+				
+				var getter=document.getElementById('getter');
+				getter.onclick=function(){
+					$.ajax(
+							{
+								url: '/user/crazyming411',
+								type: 'GET',
+								error: function(msg){
+									console.log(msg);
+								},
+								success: function(msg){
+									console.log(msg);
+								}
+							}
+						);
 				}
 			}
 		</script>
@@ -33,7 +53,8 @@
 		<form id="login" action="" method="POST">
 			Account:<input type="text" name="account" /><br />
 			Password:<input type="text" name="pass" />
-			<input type="submit" />
+			<input type="button" value="Send" id="send" />
 		</form>
+		<input type="button" id="getter" value="Get User"/>
 	</body>
 </html>

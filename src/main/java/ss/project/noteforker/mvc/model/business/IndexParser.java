@@ -1,5 +1,7 @@
 package ss.project.noteforker.mvc.model.business;
 
+import java.util.ArrayList;
+
 public class IndexParser {
 	
 	/**
@@ -28,11 +30,12 @@ public class IndexParser {
 	 * 
 	 * */
 	
-	public static String[] parseContent(String content){
+	public static ArrayList<String> parseContent(String content){
 		
 		String[] files=content.split("\n");
 		int layer=0; //0 is root!
 		StringBuffer path=new StringBuffer("/");
+		ArrayList<String> result=new ArrayList<String>();
 		
 		for(int i=0; i<files.length; i++){
 			int start=files[i].indexOf('\t');
@@ -41,6 +44,7 @@ public class IndexParser {
 					path.delete(1, path.length());
 				}
 				System.out.println("/"+files[i]);
+				result.add("/"+files[i]);
 			}else{
 				int end=files[i].lastIndexOf('\t');
 				files[i]=files[i].replaceAll("\t", "");
@@ -57,6 +61,7 @@ public class IndexParser {
 					path.append(files[i-1]+"/");	
 				}
 				System.out.println(path.toString()+files[i]);
+				result.add(path.toString()+files[i]);
 			}
 		}
 		return null;
