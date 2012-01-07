@@ -15,10 +15,6 @@
 	
 ### Note-worthy
 	- 2012/01/06 If you want the $.ajax work correctly with JAVA Servlet, 
-<<<<<<< HEAD
 				 insert `resp.setHeader("Access-Control-Allow-Origin", "*");` in your MVC-View method.
 	- 2012/01/07 
 		- Eclipse has a function that can create getters/setters for a class, it's useful.
-=======
-	  insert `resp.setHeader("Access-Control-Allow-Origin", "*");` in your MVC-View method.
->>>>>>> bd41e2d63239d8868b513a1b0599a1e82af96122
