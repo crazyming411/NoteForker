@@ -25,13 +25,11 @@ public class UserDao extends ModelAwareServlet<User>{
 		HttpSession session=req.getSession(false);
 		
 		if(session!=null && session.getAttribute("login").equals(id)){
-			System.out.println("Get Personal Page!");
+			System.out.println("Get Personal Page! "+id);
 		}else{
-			System.out.println("Get Public Page!");
+			System.out.println("Get Public Page! "+id);
 		}
-		
 			
-		
 	}
 	
 	@Override
@@ -40,20 +38,23 @@ public class UserDao extends ModelAwareServlet<User>{
 		User usr=getModel(req);
 		usr.setAccount(usr.getAccount().toLowerCase());
 		Objectify ofy=ObjectifyService.begin();
+		HttpSession session=req.getSession(true);
 		if(mode.equals("create")){
+			
 			if((ofy.query(User.class).filter("account", usr.getAccount()).get())!=null){
 				System.out.println("Already");
 			}else{
 				ObjectifyService.begin().put(usr);
 				System.out.println("OK Created");
+				session.setAttribute("login", usr.getAccount());
 			}
+			
 		}else if(mode.equals("login")){
 			
 			User correctUsr=ObjectifyService.begin().query(User.class).filter("account", usr.getAccount()).get();
 			if(correctUsr==null){
 				System.out.println("No Such Account!");
 			}else if((usr.getPasswd()).equals(correctUsr.getPasswd())){
-				HttpSession session=req.getSession(true);
 				if(session.isNew()){
 					session.setAttribute("login", usr.getAccount());
 					System.out.println("New Login!");
@@ -64,6 +65,10 @@ public class UserDao extends ModelAwareServlet<User>{
 				}
 			}else{
 				System.out.println("Wrong Password!");
+			}
+		}else if(mode.equals("index")){
+			if(usr.getAccount().equals(session.getAttribute("login"))){
+				
 			}
 		}
 	}

@@ -16,10 +16,18 @@ public class UserController extends ResourceController<User>{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+		String pathInfo=req.getPathInfo().toLowerCase();
+		if(pathInfo.charAt(pathInfo.length()-1) != '/'){
+			pathInfo+="/";
+		}else;
 		
-		include(req, resp, "/model/business/user-dao");
-		if(req.getHeader("Accept").contains("text/html")){
-			System.out.println("HTML");			
+		if(pathInfo.contains("/notes/")){
+			forward(req, resp, "/control/note-controller");
+		}else if(pathInfo.contains("/user/")){
+			forward(req, resp, "/view/405-method-not-allowed");
+		}else{
+			System.out.println("UserServlet!");
+			include(req, resp, "/model/business/user-dao");
 		}
 	}
 	

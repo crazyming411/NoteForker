@@ -7,7 +7,8 @@ public class User {
 	private String account;
 	
 	private String passwd;
-	
+	private String index;
+
 	public String getAccount(){
 		return this.account;
 	}
@@ -22,6 +23,14 @@ public class User {
 	
 	public void setPasswd(String passwd){
 		this.passwd=passwd;
+	}
+	
+	public String getIndex() {
+		return index;
+	}
+
+	public void setIndex(String index) {
+		this.index = index;
 	}
 	
 }

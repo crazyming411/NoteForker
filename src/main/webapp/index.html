@@ -8,18 +8,18 @@
 				var loginForm=document.getElementById('login');
 				var sendBtn=document.getElementById('send');
 				sendBtn.onclick=function(){
-					var formData='{'+
-									'"account":'+'"'+encodeURIComponent(loginForm['account'].value.toLowerCase())+'", '+
-									'"passwd":' +'"'+encodeURIComponent(loginForm['pass'].value)+'"'+
-				 				  '}';
-				 			  
+					var formData={};
+				 	formData.account=loginForm['account'].value;
+				 	formData.passwd =loginForm['pass'].value;
+				 	formData.index = "";
+					console.log(JSON.stringify(formData));
 					$.ajax(
 						{
-							url: '/user',
+							url: '/user/',
 							type: 'POST',
 							headers: {"usage":"login"},
 							contentType: "application/json; charset=utf-8",
-							data: formData,
+							data: JSON.stringify(formData),
 							dataType: "json",
 							success: function(msg){
 								console.log(msg);
@@ -35,7 +35,7 @@
 				getter.onclick=function(){
 					$.ajax(
 							{
-								url: '/user/crazyming411',
+								url: '/crazyming411',
 								type: 'GET',
 								error: function(msg){
 									console.log(msg);
@@ -51,8 +51,8 @@
 	</head>
 	<body>
 		<form id="login" action="" method="POST">
-			Account:<input type="text" name="account" /><br />
-			Password:<input type="text" name="pass" />
+			Account:<input type="text" name="account" autocomplete="off"/><br />
+			Password:<input type="password" name="pass" autocomplete="off"/>
 			<input type="button" value="Send" id="send" />
 		</form>
 		<input type="button" id="getter" value="Get User"/>

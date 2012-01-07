@@ -7,7 +7,14 @@
 
 ### Log
 	- 2012/01/05 Added Create Account/Login Function.
-	-         06 Modified User MVC to get the session controll works.
+	- 2012/01/06 Modified User MVC to get the session controll works.
+	- 2012/01/07
+		- Fix IndexParser, re-design URLs to make them more readable.
+		- Entity Class - Note, MVC-Controller - NoteController, MVC-View 400, 405 created.
+		- Note that access controll for UserController is needed, for filtering some keywords like "/user/".
 	
 ### Note-worthy
-	- 2012/01/06 If you want the $.ajax work correctly with JAVA Servlet, insert `resp.setHeader("Access-Control-Allow-Origin", "*");` in your MVC-View method.
+	- 2012/01/06 If you want the $.ajax work correctly with JAVA Servlet, 
+				 insert `resp.setHeader("Access-Control-Allow-Origin", "*");` in your MVC-View method.
+	- 2012/01/07 
+		- Eclipse has a function that can create getters/setters for a class, it's useful.

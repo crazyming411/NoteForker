@@ -5,19 +5,22 @@
       <path-set>
         <pathsSet class="linked-hash-set">
           <string>WEB-INF/appengine-web.xml</string>
+          <string>about/index.html</string>
           <string>index.html</string>
           <string>META-INF/MANIFEST.MF</string>
           <string>WEB-INF/web.xml</string>
           <string>WEB-INF/classes/log4j.properties</string>
           <string>WEB-INF/classes/logging.properties</string>
+          <string>WEB-INF/classes/ss/project/noteforker/mvc/control/NoteController.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/mvc/control/ResourceController.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/mvc/control/UserController.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/mvc/model/business/IndexParser.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/mvc/model/business/UserDao.class</string>
-          <string>WEB-INF/classes/ss/project/noteforker/mvc/model/domain/File.class</string>
-          <string>WEB-INF/classes/ss/project/noteforker/mvc/model/domain/Folder.class</string>
+          <string>WEB-INF/classes/ss/project/noteforker/mvc/model/domain/Note.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/mvc/model/domain/User.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/mvc/ModelAwareServlet.class</string>
+          <string>WEB-INF/classes/ss/project/noteforker/mvc/view/Http400BadRequestView.class</string>
+          <string>WEB-INF/classes/ss/project/noteforker/mvc/view/Http405MethodNotAllowedView.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/mvc/view/UserJsonView.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/service/httpretrieve/HttpRetriever.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/service/json/JsonService.class</string>

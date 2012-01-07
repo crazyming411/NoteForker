@@ -1,6 +1,6 @@
 package ss.project.noteforker.mvc.model.business;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class IndexParser {
 	
@@ -28,42 +28,67 @@ public class IndexParser {
 	 * 
 	 * [Layer3 has no parent!]
 	 * 
+	 * 
+	 * Return : HashMap<String, String>
+	 *   Key  : Full Path of a file/folder
+	 *  Value : Identifier to check if it's a file or a folder
+	 * 
+	 * 
+	 * Last Modified: 2012/01/07 12:00 am
+	 * 
 	 * */
 	
-	public static ArrayList<String> parseContent(String content){
+	public static HashMap<String, String> parseContent(String content){
 		
 		String[] files=content.split("\n");
 		int layer=0; //0 is root!
+		
 		StringBuffer path=new StringBuffer("/");
-		ArrayList<String> result=new ArrayList<String>();
+		HashMap<String, String> result=new HashMap<String, String>();
 		
 		for(int i=0; i<files.length; i++){
+			
+			files[i]=files[i].replaceAll("(\t)*$", ""); //remove \t which is at the end of the line
 			int start=files[i].indexOf('\t');
-			if(start==-1){ //root
+			
+			if(start==-1){ //root layer
+				
 				if(layer!=0){
-					path.delete(1, path.length());
+					path.delete(1, path.length()-1);
+				}else;
+				
+				if(files[i].indexOf('.')!=-1){
+					result.put("/"+files[i], "File");
+				}else{
+					result.put("/"+files[i], "Folder");
 				}
-				System.out.println("/"+files[i]);
-				result.add("/"+files[i]);
+				
 			}else{
+				
 				int end=files[i].lastIndexOf('\t');
 				files[i]=files[i].replaceAll("\t", "");
 				
-				if(end-start+1<layer){
+				if(end-start+1<layer){ //decrease layer
+					
 					int diff=layer-(end-start+1);
 					for(int j=0; j<=diff; j++){
 						path.delete(path.lastIndexOf("/"), path.length());
 					}
-					path.append("/");
+					path.append('/');
 					layer=end-start+1;
-				}else if(end-start+1>layer){
+					
+				}else if(end-start+1>layer){ //increase layer
+					
 					layer=end-start+1;
-					path.append(files[i-1]+"/");	
-				}
-				System.out.println(path.toString()+files[i]);
-				result.add(path.toString()+files[i]);
+					result.put(path+files[i-1], "Folder");
+					path.append(files[i-1]+"/");
+				
+				}else; //just at the layer
+				
+				result.put(path.toString()+files[i], "File");
 			}
 		}
-		return null;
+		return result;
 	}
+	
 }

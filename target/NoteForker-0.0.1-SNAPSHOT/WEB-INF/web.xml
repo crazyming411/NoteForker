@@ -20,7 +20,16 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>user-controller</servlet-name>
-		<url-pattern>/user/*</url-pattern>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>note-controller</servlet-name>
+		<servlet-class>ss.project.noteforker.mvc.control.NoteController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>note-controller</servlet-name>
+		<url-pattern>/control/note-controller</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
@@ -42,11 +51,30 @@
 		<url-pattern>/view/user-json-view</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>bad-request-view</servlet-name>
+		<servlet-class>ss.project.noteforker.mvc.view.Http400BadRequestView</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>bad-request-view</servlet-name>
+		<url-pattern>/view/400-bad-request</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>method-not-allowed-view</servlet-name>
+		<servlet-class>ss.project.noteforker.mvc.view.Http405MethodNotAllowedView</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>method-not-allowed-view</servlet-name>
+		<url-pattern>/view/405-method-not-allowed</url-pattern>
+	</servlet-mapping>
+	
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Internal URLs</web-resource-name>
 			<url-pattern>/model/*</url-pattern>
 			<url-pattern>/view/*</url-pattern>
+			<url-pattern>/control/*</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>admin</role-name>
