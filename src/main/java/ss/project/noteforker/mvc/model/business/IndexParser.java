@@ -1,6 +1,7 @@
 package ss.project.noteforker.mvc.model.business;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class IndexParser {
 	
@@ -54,7 +55,8 @@ public class IndexParser {
 			if(start==-1){ //root layer
 				
 				if(layer!=0){
-					path.delete(1, path.length()-1);
+					path.delete(0, path.length()-1);
+					layer=0;
 				}else;
 				
 				if(files[i].indexOf('.')!=-1){
@@ -88,6 +90,12 @@ public class IndexParser {
 				result.put(path.toString()+files[i], "File");
 			}
 		}
+		for(Map.Entry<String, String> entry : result.entrySet()){
+			if(entry.getValue().equals("File") && (entry.getKey().substring(entry.getKey().lastIndexOf('/')).indexOf('.'))==-1){
+				result.put(entry.getKey(), "Folder");
+			}
+		}
+		
 		return result;
 	}
 	

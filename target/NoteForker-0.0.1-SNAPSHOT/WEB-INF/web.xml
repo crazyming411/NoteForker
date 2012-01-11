@@ -41,6 +41,14 @@
 		<url-pattern>/model/business/user-dao</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>note-dao</servlet-name>
+		<servlet-class>ss.project.noteforker.mvc.model.business.NoteDao</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>note-dao</servlet-name>
+		<url-pattern>/model/business/note-dao</url-pattern>
+	</servlet-mapping>
 	
 	<servlet>
 		<servlet-name>user-controller-json-view</servlet-name>

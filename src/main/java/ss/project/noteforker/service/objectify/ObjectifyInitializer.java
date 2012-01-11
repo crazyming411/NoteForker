@@ -18,6 +18,7 @@ public final class ObjectifyInitializer implements ServletContextListener {
 	public void contextInitialized(final ServletContextEvent sce) {
 		//ObjectifyService.register(Entity.class);
 		ObjectifyService.register(User.class);
+		ObjectifyService.register(Note.class);
 	}
 
 	@Override

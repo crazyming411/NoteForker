@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ss.project.noteforker.mvc.model.domain.User;
-import ss.project.noteforker.service.httpretrieve.HttpRetriever;
 import ss.project.noteforker.service.json.JsonService;
 
 
@@ -17,16 +16,29 @@ public class UserController extends ResourceController<User>{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-		System.out.println(HttpRetriever.getContent("http://dl.dropbox.com/u/15537219/ssfinal.txt"));
-		String pathInfo=req.getPathInfo().toLowerCase();
+		
+		StringBuffer pathInfo=new StringBuffer(req.getPathInfo().toLowerCase());
 		if(pathInfo.charAt(pathInfo.length()-1) != '/'){
-			pathInfo+="/";
+			pathInfo.append('/');
 		}else;
 		
-		if(pathInfo.contains("/notes/")){
+		if(pathInfo.toString().contains("/notes/")){	//get note!
+			pathInfo.deleteCharAt(pathInfo.length()-1);
+			pathInfo.deleteCharAt(0);
+			
+			String userId=pathInfo.toString().substring(0, pathInfo.toString().indexOf('/'));
+			String noteId=pathInfo.toString().substring(pathInfo.toString().lastIndexOf('/'));
+			
+			noteId=noteId.replaceAll("/", "");
+			
+			req.setAttribute("noteId", noteId);
+			req.setAttribute("userId", userId);
+			
 			forward(req, resp, "/control/note-controller");
-		}else if(pathInfo.contains("/user/")){
+		}else if(pathInfo.toString().contains("/user/")){	//PRIVATE URL use for login, create account
 			forward(req, resp, "/view/405-method-not-allowed");
+		}else if(pathInfo.toString().contains("favicon.ico")){	//
+			return;
 		}else{
 			System.out.println("UserServlet!");
 			include(req, resp, "/model/business/user-dao");
@@ -35,14 +47,18 @@ public class UserController extends ResourceController<User>{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-
-		String body=URLDecoder.decode(getRequestBody(req), "UTF-8");
-		User usr = JsonService.deserialize(body, User.class);
-		setModel(req, usr);
 		
-		include(req, resp, "/model/business/user-dao");
-		
-		forward(req, resp, "/view/user-json-view");
+		String mode=req.getHeader("usage");
+		if(!mode.equals("index")){
+			String body=URLDecoder.decode(getRequestBody(req), "UTF-8");
+			User usr = JsonService.deserialize(body, User.class);
+			setModel(req, usr);
+			
+			include(req, resp, "/model/business/user-dao");
+			forward(req, resp, "/view/user-json-view");
+		}else{
+			forward(req, resp, "/control/note-controller");
+		}
 	}
 	
 }

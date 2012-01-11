@@ -21,7 +21,7 @@ public class UserDao extends ModelAwareServlet<User>{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		
 		String id=req.getPathInfo().substring(1).toLowerCase();
-		
+		System.out.println(id);
 		HttpSession session=req.getSession(false);
 		
 		if(session!=null && session.getAttribute("login").equals(id)){
@@ -38,7 +38,7 @@ public class UserDao extends ModelAwareServlet<User>{
 		User usr=getModel(req);
 		usr.setAccount(usr.getAccount().toLowerCase());
 		Objectify ofy=ObjectifyService.begin();
-		HttpSession session=req.getSession(true);
+		
 		if(mode.equals("create")){
 			
 			if((ofy.query(User.class).filter("account", usr.getAccount()).get())!=null){
@@ -46,6 +46,7 @@ public class UserDao extends ModelAwareServlet<User>{
 			}else{
 				ObjectifyService.begin().put(usr);
 				System.out.println("OK Created");
+				HttpSession session=req.getSession(true);
 				session.setAttribute("login", usr.getAccount());
 			}
 			
@@ -55,6 +56,7 @@ public class UserDao extends ModelAwareServlet<User>{
 			if(correctUsr==null){
 				System.out.println("No Such Account!");
 			}else if((usr.getPasswd()).equals(correctUsr.getPasswd())){
+				HttpSession session=req.getSession(true);
 				if(session.isNew()){
 					session.setAttribute("login", usr.getAccount());
 					System.out.println("New Login!");
@@ -62,15 +64,13 @@ public class UserDao extends ModelAwareServlet<User>{
 					resp.addCookie(cookie);
 				}else{
 					System.out.println("Welcome Back!");
+					session.setAttribute("login", usr.getAccount());
 				}
 			}else{
 				System.out.println("Wrong Password!");
 			}
-		}else if(mode.equals("index")){
-			if(usr.getAccount().equals(session.getAttribute("login"))){
-				
-			}
-		}
+		}else;
+		
 	}
 	
 }

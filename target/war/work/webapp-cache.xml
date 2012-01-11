@@ -15,6 +15,7 @@
           <string>WEB-INF/classes/ss/project/noteforker/mvc/control/ResourceController.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/mvc/control/UserController.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/mvc/model/business/IndexParser.class</string>
+          <string>WEB-INF/classes/ss/project/noteforker/mvc/model/business/NoteDao.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/mvc/model/business/UserDao.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/mvc/model/domain/Note.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/mvc/model/domain/User.class</string>

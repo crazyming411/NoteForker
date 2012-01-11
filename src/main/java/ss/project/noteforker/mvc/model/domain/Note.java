@@ -10,9 +10,25 @@ public class Note {
 	private String user;
 	private String path;
 	
-	private String title;
-	private String content;
+	private String  title;
+	private String  content;
+	private boolean privacy;
 	
+	public Note(){
+		this.user=null;
+		this.path=null;
+		this.title=null;
+		this.content=null;
+		this.privacy=false;
+	}
+	
+	public Note(String user, String path, String title, String content){
+		this.user=user;
+		this.path=path;
+		this.title=title;
+		this.content=content;
+		this.privacy=false;
+	}
 	
 	public Long getId() {
 		return id;
@@ -52,6 +68,14 @@ public class Note {
 	
 	public void setContent(String content) {
 		this.content = content;
+	}
+	
+	public boolean isPrivacy() {
+		return privacy;
+	}
+
+	public void setPrivacy(boolean privacy) {
+		this.privacy = privacy;
 	}
 	
 }

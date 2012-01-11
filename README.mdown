@@ -7,11 +7,19 @@
 
 ### Log
 	- 2012/01/05 Added Create Account/Login Function.
-	- 2012/01/06 Modified User MVC to get the session controll works.
+	- 2012/01/06 Modified User MVC to get the session control works.
 	- 2012/01/07
 		- Fix IndexParser, re-design URLs to make them more readable.
 		- Entity Class - Note, MVC-Controller - NoteController, MVC-View 400, 405 created.
-		- Note that access controll for UserController is needed, for filtering some keywords like "/user/".
+		- Note that access control for UserController is needed, for filtering some keywords like "/user/".
+	- 2012/01/11
+		- Fix IndexParser(minor bug).
+		- Can store Note(s) now. 
+		- For index.html, you may test some basic function.
+			- usage:{create, login, index}
+				- create : create account with provided Account and Password
+				- login	 : login with the account provided.
+				- index	 : provide index of the user. Notes will be downloaded and stored automatically.
 	
 ### Note-worthy
 	- 2012/01/06 If you want the $.ajax work correctly with JAVA Servlet, 

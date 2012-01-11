@@ -6,18 +6,19 @@
 		<script type="text/javascript">
 			onload=function(){
 				var loginForm=document.getElementById('login');
-				var sendBtn=document.getElementById('send');
-				sendBtn.onclick=function(){
+				//var sendBtn=document.getElementById('send');
+				loginForm.onsubmit=function(e){
+					e.preventDefault();
 					var formData={};
 				 	formData.account=loginForm['account'].value;
 				 	formData.passwd =loginForm['pass'].value;
-				 	formData.index = "";
+				 	formData.index = loginForm['index'].value;
 					console.log(JSON.stringify(formData));
 					$.ajax(
 						{
 							url: '/user/',
 							type: 'POST',
-							headers: {"usage":"login"},
+							headers: {"usage":loginForm['usage'].value},
 							contentType: "application/json; charset=utf-8",
 							data: JSON.stringify(formData),
 							dataType: "json",
@@ -51,9 +52,11 @@
 	</head>
 	<body>
 		<form id="login" action="" method="POST">
-			Account:<input type="text" name="account" autocomplete="off"/><br />
-			Password:<input type="password" name="pass" autocomplete="off"/>
-			<input type="button" value="Send" id="send" />
+			Account:<input type="text" name="account"/><br />
+			Password:<input type="password" name="pass"/><br>
+			Index:<input type="text" name="index" /><br>
+			Usage:<input type="text" name="usage" /><br>
+			<input type="submit" value="submit" id="send" />
 		</form>
 		<input type="button" id="getter" value="Get User"/>
 	</body>
