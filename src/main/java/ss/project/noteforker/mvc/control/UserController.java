@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ss.project.noteforker.mvc.model.domain.User;
+import ss.project.noteforker.service.httpretrieve.HttpRetriever;
 import ss.project.noteforker.service.json.JsonService;
 
 
@@ -16,6 +17,7 @@ public class UserController extends ResourceController<User>{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+		System.out.println(HttpRetriever.getContent("http://dl.dropbox.com/u/15537219/ssfinal.txt"));
 		String pathInfo=req.getPathInfo().toLowerCase();
 		if(pathInfo.charAt(pathInfo.length()-1) != '/'){
 			pathInfo+="/";

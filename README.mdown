@@ -18,3 +18,5 @@
 				 insert `resp.setHeader("Access-Control-Allow-Origin", "*");` in your MVC-View method.
 	- 2012/01/07 
 		- Eclipse has a function that can create getters/setters for a class, it's useful.
+	- 2012/01/11
+		- Please run the project and Click the "Get User" button. And see what is in the console.
