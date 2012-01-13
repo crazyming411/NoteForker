@@ -25,8 +25,10 @@ public class UserDao extends ModelAwareServlet<User>{
 		HttpSession session=req.getSession(false);
 		
 		if(session!=null && session.getAttribute("login").equals(id)){
+			//TODO - Response
 			System.out.println("Get Personal Page! "+id);
 		}else{
+			//TODO - Response
 			System.out.println("Get Public Page! "+id);
 		}
 			
@@ -54,19 +56,23 @@ public class UserDao extends ModelAwareServlet<User>{
 			
 			User correctUsr=ObjectifyService.begin().query(User.class).filter("account", usr.getAccount()).get();
 			if(correctUsr==null){
+				//TODO - Response
 				System.out.println("No Such Account!");
 			}else if((usr.getPasswd()).equals(correctUsr.getPasswd())){
 				HttpSession session=req.getSession(true);
 				if(session.isNew()){
+					//TODO - Response
 					session.setAttribute("login", usr.getAccount());
 					System.out.println("New Login!");
 					Cookie cookie=new Cookie("user",usr.getAccount());
 					resp.addCookie(cookie);
 				}else{
+					//TODO - Response
 					System.out.println("Welcome Back!");
 					session.setAttribute("login", usr.getAccount());
 				}
 			}else{
+				//TODO - Response
 				System.out.println("Wrong Password!");
 			}
 		}else;

@@ -65,6 +65,8 @@ public class SearchDao extends ModelAwareServlet<Note>{
 			e.printStackTrace();
 		}
 	    
+	  //TODO - SEO
+	    
 	    queryTitle.setBoost(2.0f);
 	    queryContent.setBoost(1.0f);
 	    
@@ -86,6 +88,8 @@ public class SearchDao extends ModelAwareServlet<Note>{
 	    }
 	    
 	    indexSearcher.close();
+	    
+	    //TODO - Response
 	}
 	
 	private static void addDoc(IndexWriter iw, String title, String content) throws IOException {

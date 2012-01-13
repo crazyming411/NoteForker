@@ -31,9 +31,11 @@ public class NoteDao extends ModelAwareServlet<Note>{
 		
 		Note note=ObjectifyService.begin().query(Note.class).filter("user", usr).filter("id", noteId).get();
 		if(note!=null){
+			//TODO - Response
 			resp.setCharacterEncoding("UTF-8");
 			resp.getWriter().print(note.getContent());
 		}else{
+			//TODO - Response
 			resp.setStatus(404);
 		}
 	}
@@ -74,6 +76,7 @@ public class NoteDao extends ModelAwareServlet<Note>{
 			for(Note n : qq){
 				System.out.println(n.getId()+" : "+ n.getTitle());
 			}
+			//TODO - Response
 		}
 	}
 }
