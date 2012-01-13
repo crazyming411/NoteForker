@@ -29,8 +29,8 @@ public class NoteDao extends ModelAwareServlet<Note>{
 		
 		Long noteId=Long.parseLong(id);
 		
-		Note note=ObjectifyService.begin().query(Note.class).filter("user", usr).filter("id", noteId).get();
-		if(note!=null){
+		Note note=ObjectifyService.begin().query(Note.class).filter("user", usr).filter("docId", noteId).get();
+		if(note!=null && !note.isPrivacy()){
 			//TODO - Response
 			resp.setCharacterEncoding("UTF-8");
 			resp.getWriter().print(note.getContent());
@@ -49,7 +49,7 @@ public class NoteDao extends ModelAwareServlet<Note>{
 			String indexPath=(String) req.getAttribute("indexPath");
 			User usr=ofy.get(User.class, userId);
 			usr.setIndex(indexPath);
-			ofy.put(usr);
+			int maxId=usr.getMaxId().intValue();
 			
 			HashMap<String, String> data=IndexParser.parseContent(HttpRetriever.getContent(indexPath));
 						
@@ -59,22 +59,34 @@ public class NoteDao extends ModelAwareServlet<Note>{
 			
 			for(Map.Entry<String, String> entry : data.entrySet()){
 				if(entry.getValue().equals("File")){
+					
 					String content=HttpRetriever.getContent(buf.append(entry.getKey()).toString());
 					StringBuffer title=new StringBuffer(content.substring(0, content.indexOf('\n')));
 					title.delete(0, 2);
 					content=content.substring(content.indexOf('\n')+1);
-					Note note=new Note(userId, entry.getKey(), title.toString(), content);
-					ofy.put(note);
+					
+					Note currentNote=ofy.query(Note.class).filter("user", userId).filter("path", entry.getKey()).get();
+					if(currentNote!=null){
+						ofy.delete(Note.class, currentNote.getId());
+						currentNote.setTitle(title.toString());
+						currentNote.setContent(content);
+						ofy.put(currentNote);
+					}else{
+						Note note=new Note(userId, entry.getKey(), title.toString(), content, new Long(maxId));
+						ofy.put(note);
+						maxId++;
+					}
 				}
 				FileIndex fileIndex=new FileIndex(userId, entry.getKey(), entry.getValue());
 				ofy.put(fileIndex);
 				buf.delete(indexPath.length(), buf.length());
 			}
-			
+			usr.setMaxId(new Long(maxId));
+			ofy.put(usr);
 			
 			List<Note> qq=ofy.query(Note.class).filter("user", userId).list();
 			for(Note n : qq){
-				System.out.println(n.getId()+" : "+ n.getTitle());
+				System.out.println(n.getId() + " : " + n.getDocId()+" : "+ n.getTitle());
 			}
 			//TODO - Response
 		}

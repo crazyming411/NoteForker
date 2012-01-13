@@ -9,25 +9,28 @@ public class Note {
 	
 	private String user;
 	private String path;
-	
+	private  Long  docId;
+
 	private String  title;
 	private String  content;
-	private boolean privacy;
+	private boolean privacy; //true if it's a private note
 	
 	public Note(){
 		this.user=null;
 		this.path=null;
 		this.title=null;
 		this.content=null;
-		this.privacy=false;
+		this.privacy=true;
+		this.docId=new Long(-1);
 	}
 	
-	public Note(String user, String path, String title, String content){
+	public Note(String user, String path, String title, String content, Long docId){
 		this.user=user;
 		this.path=path;
 		this.title=title;
 		this.content=content;
 		this.privacy=false;
+		this.docId=docId;
 	}
 	
 	public Long getId() {
@@ -78,4 +81,11 @@ public class Note {
 		this.privacy = privacy;
 	}
 	
+	public Long getDocId() {
+		return docId;
+	}
+
+	public void setDocId(Long docId) {
+		this.docId = docId;
+	}
 }

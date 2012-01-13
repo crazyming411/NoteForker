@@ -8,7 +8,8 @@ public class User {
 	
 	private String passwd;
 	private String index;
-	
+	private  Long  maxId=new Long(0);
+
 	public String getAccount(){
 		return this.account;
 	}
@@ -31,6 +32,14 @@ public class User {
 
 	public void setIndex(String index) {
 		this.index = index;
+	}
+	
+	public Long getMaxId() {
+		return maxId;
+	}
+
+	public void setMaxId(Long maxId) {
+		this.maxId = maxId;
 	}
 	
 }

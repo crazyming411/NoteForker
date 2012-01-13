@@ -23,6 +23,7 @@
 	- 2012/01/13
 		- Search Function is available now. Use `${host}/search?q=${Query String}` to query.
 		- New domain object - FileIndex, used to store the index for a specific user.
+		- Improve Note DAO functionality, now the note id will be permanent if user doesn't delete them.
 	
 ### Note-worthy
 	- 2012/01/06 If you want the $.ajax work correctly with JAVA Servlet, 
