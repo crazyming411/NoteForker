@@ -8,7 +8,7 @@ public class User {
 	
 	private String passwd;
 	private String index;
-
+	
 	public String getAccount(){
 		return this.account;
 	}

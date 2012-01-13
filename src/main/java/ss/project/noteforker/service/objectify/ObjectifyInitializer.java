@@ -19,6 +19,7 @@ public final class ObjectifyInitializer implements ServletContextListener {
 		//ObjectifyService.register(Entity.class);
 		ObjectifyService.register(User.class);
 		ObjectifyService.register(Note.class);
+		ObjectifyService.register(FileIndex.class);
 	}
 
 	@Override

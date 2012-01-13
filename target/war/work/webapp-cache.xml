@@ -13,10 +13,13 @@
           <string>WEB-INF/classes/logging.properties</string>
           <string>WEB-INF/classes/ss/project/noteforker/mvc/control/NoteController.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/mvc/control/ResourceController.class</string>
+          <string>WEB-INF/classes/ss/project/noteforker/mvc/control/SearchController.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/mvc/control/UserController.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/mvc/model/business/IndexParser.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/mvc/model/business/NoteDao.class</string>
+          <string>WEB-INF/classes/ss/project/noteforker/mvc/model/business/SearchDao.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/mvc/model/business/UserDao.class</string>
+          <string>WEB-INF/classes/ss/project/noteforker/mvc/model/domain/FileIndex.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/mvc/model/domain/Note.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/mvc/model/domain/User.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/mvc/ModelAwareServlet.class</string>
@@ -30,7 +33,7 @@
           <string>WEB-INF/classes/ss/project/noteforker/service/ServiceException.class</string>
           <string>WEB-INF/classes/ss/project/noteforker/service/session/HttpSessionCollector.class</string>
           <string>WEB-INF/lib/persistence-api-1.0.jar</string>
-          <string>WEB-INF/lib/appengine-api-1.0-sdk-1.6.0.jar</string>
+          <string>WEB-INF/lib/appengine-api-1.0-sdk-1.6.1.jar</string>
           <string>WEB-INF/lib/objectify-3.0.jar</string>
           <string>WEB-INF/lib/standard-1.1.2.jar</string>
           <string>WEB-INF/lib/slf4j-api-1.6.0.jar</string>
@@ -38,10 +41,9 @@
           <string>WEB-INF/lib/logback-core-0.9.22.jar</string>
           <string>WEB-INF/lib/jackson-core-asl-1.9.2.jar</string>
           <string>WEB-INF/lib/jackson-mapper-asl-1.9.2.jar</string>
-          <string>WEB-INF/lib/httpclient-4.1.2.jar</string>
-          <string>WEB-INF/lib/httpcore-4.1.2.jar</string>
-          <string>WEB-INF/lib/commons-logging-1.1.1.jar</string>
-          <string>WEB-INF/lib/commons-codec-1.4.jar</string>
+          <string>WEB-INF/lib/lucene-core-3.5.0.jar</string>
+          <string>WEB-INF/lib/lucene-queries-3.5.0.jar</string>
+          <string>WEB-INF/lib/jakarta-regexp-1.4.jar</string>
         </pathsSet>
       </path-set>
     </entry>
@@ -99,7 +101,7 @@
       <dependency>
         <groupId>com.google.appengine</groupId>
         <artifactId>appengine-api-1.0-sdk</artifactId>
-        <version>1.6.0</version>
+        <version>1.6.1</version>
         <type>jar</type>
         <scope>compile</scope>
         <exclusions/>
@@ -138,7 +140,7 @@
           </entry>
         </locations>
       </dependency>
-      <targetFileName>appengine-api-1.0-sdk-1.6.0.jar</targetFileName>
+      <targetFileName>appengine-api-1.0-sdk-1.6.1.jar</targetFileName>
     </org.apache.maven.plugin.war.util.DependencyInfo>
     <org.apache.maven.plugin.war.util.DependencyInfo>
       <dependency>
@@ -444,7 +446,7 @@
       <dependency>
         <groupId>com.google.appengine</groupId>
         <artifactId>appengine-api-labs</artifactId>
-        <version>1.6.0</version>
+        <version>1.6.1</version>
         <type>jar</type>
         <scope>test</scope>
         <exclusions/>
@@ -495,8 +497,8 @@
     <org.apache.maven.plugin.war.util.DependencyInfo>
       <dependency>
         <groupId>com.google.appengine</groupId>
-        <artifactId>appengine-api-stubs</artifactId>
-        <version>1.6.0</version>
+        <artifactId>appengine-testing</artifactId>
+        <version>1.6.1</version>
         <type>jar</type>
         <scope>test</scope>
         <exclusions/>
@@ -504,29 +506,13 @@
           <entry>
             <string></string>
             <org.apache.maven.model.InputLocation>
-              <lineNumber>104</lineNumber>
+              <lineNumber>106</lineNumber>
               <columnNumber>21</columnNumber>
               <source reference="../../../../../../org.apache.maven.plugin.war.util.DependencyInfo/dependency/locations/entry/org.apache.maven.model.InputLocation/source"/>
             </org.apache.maven.model.InputLocation>
           </entry>
           <entry>
             <string>groupId</string>
-            <org.apache.maven.model.InputLocation>
-              <lineNumber>105</lineNumber>
-              <columnNumber>22</columnNumber>
-              <source reference="../../../../../../org.apache.maven.plugin.war.util.DependencyInfo/dependency/locations/entry/org.apache.maven.model.InputLocation/source"/>
-            </org.apache.maven.model.InputLocation>
-          </entry>
-          <entry>
-            <string>artifactId</string>
-            <org.apache.maven.model.InputLocation>
-              <lineNumber>106</lineNumber>
-              <columnNumber>25</columnNumber>
-              <source reference="../../../../../../org.apache.maven.plugin.war.util.DependencyInfo/dependency/locations/entry/org.apache.maven.model.InputLocation/source"/>
-            </org.apache.maven.model.InputLocation>
-          </entry>
-          <entry>
-            <string>version</string>
             <org.apache.maven.model.InputLocation>
               <lineNumber>107</lineNumber>
               <columnNumber>22</columnNumber>
@@ -534,45 +520,9 @@
             </org.apache.maven.model.InputLocation>
           </entry>
           <entry>
-            <string>scope</string>
-            <org.apache.maven.model.InputLocation>
-              <lineNumber>108</lineNumber>
-              <columnNumber>20</columnNumber>
-              <source reference="../../../../../../org.apache.maven.plugin.war.util.DependencyInfo/dependency/locations/entry/org.apache.maven.model.InputLocation/source"/>
-            </org.apache.maven.model.InputLocation>
-          </entry>
-        </locations>
-      </dependency>
-    </org.apache.maven.plugin.war.util.DependencyInfo>
-    <org.apache.maven.plugin.war.util.DependencyInfo>
-      <dependency>
-        <groupId>com.google.appengine</groupId>
-        <artifactId>appengine-testing</artifactId>
-        <version>1.6.0</version>
-        <type>jar</type>
-        <scope>test</scope>
-        <exclusions/>
-        <locations class="linked-hash-map">
-          <entry>
-            <string></string>
-            <org.apache.maven.model.InputLocation>
-              <lineNumber>111</lineNumber>
-              <columnNumber>21</columnNumber>
-              <source reference="../../../../../../org.apache.maven.plugin.war.util.DependencyInfo/dependency/locations/entry/org.apache.maven.model.InputLocation/source"/>
-            </org.apache.maven.model.InputLocation>
-          </entry>
-          <entry>
-            <string>groupId</string>
-            <org.apache.maven.model.InputLocation>
-              <lineNumber>112</lineNumber>
-              <columnNumber>22</columnNumber>
-              <source reference="../../../../../../org.apache.maven.plugin.war.util.DependencyInfo/dependency/locations/entry/org.apache.maven.model.InputLocation/source"/>
-            </org.apache.maven.model.InputLocation>
-          </entry>
-          <entry>
             <string>artifactId</string>
             <org.apache.maven.model.InputLocation>
-              <lineNumber>113</lineNumber>
+              <lineNumber>108</lineNumber>
               <columnNumber>25</columnNumber>
               <source reference="../../../../../../org.apache.maven.plugin.war.util.DependencyInfo/dependency/locations/entry/org.apache.maven.model.InputLocation/source"/>
             </org.apache.maven.model.InputLocation>
@@ -580,7 +530,7 @@
           <entry>
             <string>version</string>
             <org.apache.maven.model.InputLocation>
-              <lineNumber>114</lineNumber>
+              <lineNumber>109</lineNumber>
               <columnNumber>22</columnNumber>
               <source reference="../../../../../../org.apache.maven.plugin.war.util.DependencyInfo/dependency/locations/entry/org.apache.maven.model.InputLocation/source"/>
             </org.apache.maven.model.InputLocation>
@@ -588,7 +538,7 @@
           <entry>
             <string>scope</string>
             <org.apache.maven.model.InputLocation>
-              <lineNumber>115</lineNumber>
+              <lineNumber>110</lineNumber>
               <columnNumber>20</columnNumber>
               <source reference="../../../../../../org.apache.maven.plugin.war.util.DependencyInfo/dependency/locations/entry/org.apache.maven.model.InputLocation/source"/>
             </org.apache.maven.model.InputLocation>
@@ -600,6 +550,51 @@
       <dependency>
         <groupId>org.codehaus.jackson</groupId>
         <artifactId>jackson-core-asl</artifactId>
+        <version>1.9.2</version>
+        <type>jar</type>
+        <scope>compile</scope>
+        <exclusions/>
+        <locations class="linked-hash-map">
+          <entry>
+            <string></string>
+            <org.apache.maven.model.InputLocation>
+              <lineNumber>112</lineNumber>
+              <columnNumber>21</columnNumber>
+              <source reference="../../../../../../org.apache.maven.plugin.war.util.DependencyInfo/dependency/locations/entry/org.apache.maven.model.InputLocation/source"/>
+            </org.apache.maven.model.InputLocation>
+          </entry>
+          <entry>
+            <string>groupId</string>
+            <org.apache.maven.model.InputLocation>
+              <lineNumber>113</lineNumber>
+              <columnNumber>19</columnNumber>
+              <source reference="../../../../../../org.apache.maven.plugin.war.util.DependencyInfo/dependency/locations/entry/org.apache.maven.model.InputLocation/source"/>
+            </org.apache.maven.model.InputLocation>
+          </entry>
+          <entry>
+            <string>artifactId</string>
+            <org.apache.maven.model.InputLocation>
+              <lineNumber>114</lineNumber>
+              <columnNumber>22</columnNumber>
+              <source reference="../../../../../../org.apache.maven.plugin.war.util.DependencyInfo/dependency/locations/entry/org.apache.maven.model.InputLocation/source"/>
+            </org.apache.maven.model.InputLocation>
+          </entry>
+          <entry>
+            <string>version</string>
+            <org.apache.maven.model.InputLocation>
+              <lineNumber>115</lineNumber>
+              <columnNumber>19</columnNumber>
+              <source reference="../../../../../../org.apache.maven.plugin.war.util.DependencyInfo/dependency/locations/entry/org.apache.maven.model.InputLocation/source"/>
+            </org.apache.maven.model.InputLocation>
+          </entry>
+        </locations>
+      </dependency>
+      <targetFileName>jackson-core-asl-1.9.2.jar</targetFileName>
+    </org.apache.maven.plugin.war.util.DependencyInfo>
+    <org.apache.maven.plugin.war.util.DependencyInfo>
+      <dependency>
+        <groupId>org.codehaus.jackson</groupId>
+        <artifactId>jackson-mapper-asl</artifactId>
         <version>1.9.2</version>
         <type>jar</type>
         <scope>compile</scope>
@@ -639,13 +634,13 @@
           </entry>
         </locations>
       </dependency>
-      <targetFileName>jackson-core-asl-1.9.2.jar</targetFileName>
+      <targetFileName>jackson-mapper-asl-1.9.2.jar</targetFileName>
     </org.apache.maven.plugin.war.util.DependencyInfo>
     <org.apache.maven.plugin.war.util.DependencyInfo>
       <dependency>
-        <groupId>org.codehaus.jackson</groupId>
-        <artifactId>jackson-mapper-asl</artifactId>
-        <version>1.9.2</version>
+        <groupId>org.apache.lucene</groupId>
+        <artifactId>lucene-core</artifactId>
+        <version>3.5.0</version>
         <type>jar</type>
         <scope>compile</scope>
         <exclusions/>
@@ -684,13 +679,13 @@
           </entry>
         </locations>
       </dependency>
-      <targetFileName>jackson-mapper-asl-1.9.2.jar</targetFileName>
+      <targetFileName>lucene-core-3.5.0.jar</targetFileName>
     </org.apache.maven.plugin.war.util.DependencyInfo>
     <org.apache.maven.plugin.war.util.DependencyInfo>
       <dependency>
-        <groupId>org.apache.httpcomponents</groupId>
-        <artifactId>httpclient</artifactId>
-        <version>4.1.2</version>
+        <groupId>org.apache.lucene</groupId>
+        <artifactId>lucene-queries</artifactId>
+        <version>3.5.0</version>
         <type>jar</type>
         <scope>compile</scope>
         <exclusions/>
@@ -729,7 +724,7 @@
           </entry>
         </locations>
       </dependency>
-      <targetFileName>httpclient-4.1.2.jar</targetFileName>
+      <targetFileName>lucene-queries-3.5.0.jar</targetFileName>
     </org.apache.maven.plugin.war.util.DependencyInfo>
   </dependenciesInfo>
 </webapp-structure>
