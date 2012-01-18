@@ -65,7 +65,7 @@
               <columnNumber>21</columnNumber>
               <source>
                 <modelId>netdb.courses.softwarestudio:NoteForker:0.0.1-SNAPSHOT</modelId>
-                <location>/Users/CrazyMing/WorkSpace/Code/NoteForker/pom.xml</location>
+                <location>C:\Users\GeoffRasb\workspace\ss\NoteForker\pom.xml</location>
               </source>
             </org.apache.maven.model.InputLocation>
           </entry>
