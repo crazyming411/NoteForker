@@ -41,7 +41,8 @@ public class UserController extends ResourceController<User>{
 			return;
 		}else{
 			System.out.println("UserServlet!");
-			include(req, resp, "/model/business/user-dao");
+			req.setAttribute("userId", req.getPathInfo().substring(1).toLowerCase());
+			forward(req, resp, "/model/business/user-dao");
 		}
 	}
 	
@@ -54,8 +55,8 @@ public class UserController extends ResourceController<User>{
 			User usr = JsonService.deserialize(body, User.class);
 			setModel(req, usr);
 			
-			include(req, resp, "/model/business/user-dao");
-			forward(req, resp, "/view/user-json-view");
+			forward(req, resp, "/model/business/user-dao");
+			//forward(req, resp, "/view/user-json-view");
 		}else{
 			forward(req, resp, "/control/note-controller");
 		}

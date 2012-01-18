@@ -1,6 +1,7 @@
 package ss.project.noteforker.mvc.model.business;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,6 +58,10 @@ public class NoteDao extends ModelAwareServlet<Note>{
 			StringBuffer buf= new StringBuffer();
 			buf.append(indexPath);
 			
+			ArrayList<Note> current=new ArrayList<Note>();
+			ArrayList<Note> newNote=new ArrayList<Note>();
+			ArrayList<FileIndex> fIndex=new ArrayList<FileIndex>();
+			
 			for(Map.Entry<String, String> entry : data.entrySet()){
 				if(entry.getValue().equals("File")){
 					
@@ -70,17 +75,24 @@ public class NoteDao extends ModelAwareServlet<Note>{
 						ofy.delete(Note.class, currentNote.getId());
 						currentNote.setTitle(title.toString());
 						currentNote.setContent(content);
-						ofy.put(currentNote);
+						current.add(currentNote);
+						//ofy.put(currentNote);
 					}else{
 						Note note=new Note(userId, entry.getKey(), title.toString(), content, new Long(maxId));
-						ofy.put(note);
+						newNote.add(note);
+						//ofy.put(note);
 						maxId++;
 					}
 				}
 				FileIndex fileIndex=new FileIndex(userId, entry.getKey(), entry.getValue());
-				ofy.put(fileIndex);
+				fIndex.add(fileIndex);
+				//ofy.put(fileIndex);
 				buf.delete(indexPath.length(), buf.length());
 			}
+			ofy.put(current);
+			ofy.put(newNote);
+			ofy.put(fIndex);
+			
 			usr.setMaxId(new Long(maxId));
 			ofy.put(usr);
 			

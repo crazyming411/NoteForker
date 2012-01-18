@@ -30,6 +30,7 @@ body{
 
 #navBar #profile{
 	float: right;
+	width: 150px;
 	font-size: 15px;
 	padding: 2px;
 }

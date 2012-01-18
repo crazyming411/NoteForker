@@ -24,11 +24,11 @@ public class UserJsonView extends ModelAwareServlet<User> {
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setContentType("text/html");
+		//resp.setContentType("text/html");
 		// make sure no intermediate node caches the result
+		
 		resp.setHeader("Cache-Control", "no-cache");
 		resp.setHeader("Access-Control-Allow-Origin", "*");
 		resp.setCharacterEncoding("UTF-8");
-		resp.getWriter().print("<div>hello</div>");
 	}
 }

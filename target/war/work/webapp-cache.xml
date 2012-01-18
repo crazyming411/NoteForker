@@ -6,14 +6,15 @@
         <pathsSet class="linked-hash-set">
           <string>WEB-INF/appengine-web.xml</string>
           <string>about/index.html</string>
-          <string>Glyphish.ttf</string>
-          <string>Harabara.ttf</string>
-          <string>index.css</string>
+          <string>css/index.css</string>
+          <string>fonts/Glyphish.ttf</string>
+          <string>fonts/Harabara.ttf</string>
           <string>index.html</string>
-          <string>index.js</string>
-          <string>jquery.js</string>
-          <string>login.html</string>
+          <string>js/index.js</string>
+          <string>js/jquery.js</string>
+          <string>js/Markdown.Converter.js</string>
           <string>META-INF/MANIFEST.MF</string>
+          <string>Personal.html</string>
           <string>WEB-INF/web.xml</string>
           <string>WEB-INF/classes/log4j.properties</string>
           <string>WEB-INF/classes/logging.properties</string>
@@ -71,7 +72,7 @@
               <columnNumber>21</columnNumber>
               <source>
                 <modelId>netdb.courses.softwarestudio:NoteForker:0.0.1-SNAPSHOT</modelId>
-                <location>C:\Users\GeoffRasb\workspace\ss\NoteForker\pom.xml</location>
+                <location>/Users/CrazyMing/WorkSpace/Code/NoteForker/pom.xml</location>
               </source>
             </org.apache.maven.model.InputLocation>
           </entry>
