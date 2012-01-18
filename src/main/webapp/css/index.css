@@ -1,0 +1,312 @@
+/*index css!*/
+html{
+	min-height: 100%;
+}
+
+body{
+	padding: 0;
+	margin: 0;
+}
+
+#navBar{
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	min-height: 30px; 
+	max-height: 30px; 
+	text-align: right;
+	overflow: hidden;
+}
+
+
+#navBar #profile, #navBar #home{
+	display: block;
+	position: relative;
+	width: 80px;
+	height: 30px;
+	text-align: center;
+	
+}
+
+#navBar #profile{
+	float: right;
+	font-size: 15px;
+	padding: 2px;
+}
+
+#navBar #home{
+	float: left;
+	font-size: 18px;
+	padding: 5px 9px 5px 9px;
+}
+
+#logo{
+	position: relative;
+	width: 40%;
+	font-size: 100px;
+	text-align: center;
+	margin: auto;
+	margin-top: 13%;
+}
+
+#searchField{
+	width: 40%;
+	text-align: center;
+	margin: auto;
+	margin-top: 10px;
+	padding: 1px;
+}
+
+#searchField #searchInput{
+	height: 25px;
+	width: 80%;
+	padding-left: 5px;
+	font-size: 15px;
+}
+
+#searchField #searchBtn{
+	display: inline-block;
+	height: 22px;
+	width: 13%;
+	padding: 0;
+	padding-top: 4px;
+	margin-left: 10px;
+	font-size: 19px;
+	cursor: pointer;
+}
+
+#mask{
+	position: fixed;
+	min-height: 100%;
+	min-width: 100%;
+	top: 0;
+	left: 0;
+	padding: 0;
+	margin: 0;
+	z-index: 2;
+	display: none;
+}
+
+/*Styling!!*/
+
+@font-face{
+	font-family: Harabara;
+	src: url('../fonts/Harabara.ttf');
+}
+
+@font-face{
+	font-family: Glyphish;
+	src: url('../fonts/Glyphish.ttf');
+}
+
+body{
+	background: -webkit-radial-gradient(#888, #000);
+	background:    -moz-radial-gradient(#aaa, #000);
+	background:     -ms-radial-gradient(#aaa, #000);
+	background:      -o-radial-gradient(#aaa, #000);
+	background:         radial-gradient(#aaa, #000);
+}
+
+#navBar{
+	background: -webkit-linear-gradient(top, #444, #000);
+	background:    -moz-linear-gradient(top, #444, #000);
+	background:     -ms-linear-gradient(top, #444, #000);
+	background:      -o-linear-gradient(top, #444, #000);
+	background:         linear-gradient(top, #444, #000);
+	
+	box-shadow: 0px 0px 1px rgba(180, 180, 180, 0.8);
+}
+
+#navBar #profile{
+	color: white;
+	font-family: 'PT Sans';
+	border-top: solid 3px red;
+	text-decoration: none;
+}
+
+#navBar #profile:hover{
+	background: rgba(255, 255, 255, 0.25);
+}
+
+#navBar #home{
+	color: white;
+	font-family: Harabara;
+	text-decoration: none;
+	border-right: solid 1px rgba(255,255,255, 0.6);
+}
+
+#navBar #home:hover{
+	background: rgba(255, 255, 255, 0.25);
+}
+
+#logo{
+	font-family: Harabara;
+	color: rgb(244, 244, 244);
+	text-shadow: 0px 1px 0px rgb(149, 149, 149);
+}
+
+#searchField #searchInput{
+	box-sizing: border-box;
+	border: solid 1px rgba(40, 40, 40, 0.6);
+	background: rgb(220, 220, 220);
+	color: rgb(32, 32, 32);
+	
+	-webkit-transition: all 0.4s ease-in-out; 
+	   -moz-transition: all 0.4s ease-in-out; 
+	    -ms-transition: all 0.4s ease-in-out;
+	     -o-transition: all 0.4s ease-in-out;  
+	        transition: all 0.4s ease-in-out; 
+}
+
+#searchField #searchInput:hover{
+	border: solid 1px rgba(40, 40, 40, 0.8);
+}
+
+#searchField #searchInput:focus{
+	border: solid 1px #F87431;
+}
+
+
+#searchField #searchBtn{
+	font-family: Glyphish;
+	background:	-webkit-linear-gradient(top, #F87431, rgb(229, 103, 23));
+	background:	   -moz-linear-gradient(top, #F87431, rgb(229, 103, 23));
+	background:	    -ms-linear-gradient(top, #F87431, rgb(229, 103, 23));
+	background:	     -o-linear-gradient(top, #F87431, rgb(229, 103, 23));
+	background:			linear-gradient(top, #F87431, rgb(229, 103, 23));
+	
+	
+	border: solid 1px rgba(195, 86, 23, 0.4);
+	border-radius: 3px;
+	color: white; 
+}
+
+#searchField #searchBtn:hover{
+	background:	-webkit-linear-gradient(top, #E66C2C, rgb(229, 103, 23));
+	background:	   -moz-linear-gradient(top, #E66C2C, rgb(229, 103, 23));
+	background:	    -ms-linear-gradient(top, #E66C2C, rgb(229, 103, 23));
+	background:	     -o-linear-gradient(top, #E66C2C, rgb(229, 103, 23));
+	background:	        linear-gradient(top, #E66C2C, rgb(229, 103, 23));
+		
+}
+
+
+#mask{
+	background: rgba(32,32,32,0.6);
+}
+
+/*end index css*/
+
+/*-----------------------------------*/
+
+/*login css*/
+
+#signInForm{
+	display: block;
+	position: fixed;
+	width: 20%;
+	height: 56%;
+	left: 40%;
+	top: 20%;
+	margin: auto;
+	padding: 2%;
+	font-size: 30px;
+	z-index: 3;
+	display: none;
+}
+
+#signInForm #Info{
+	display: inline-block;
+	margin-bottom: 20px;
+}
+
+#signInForm input[type="text"], #signInForm input[type="password"]{
+	width: 100%;
+	height: 30px;
+	margin-bottom: 20px;
+}
+
+#signInForm input[type="submit"]{
+	display: inline-block;
+	width: 30%;
+	height: 30px;
+	margin-top: 5px;
+}
+
+#register{
+	display: none;
+}
+
+
+
+/*login theme*/
+
+#signInForm{
+	background: rgb(40, 40, 40);
+	box-shadow: inset 0px 0px 10px black, 0px 1px 0px rgba(255, 255, 255, 0.4);
+	color: white;
+	font-family: 'PT Sans';
+}
+
+#signInForm input[type="text"], #signInForm input[type="password"]{
+	font-size: 17px;
+	padding-left: 5px;
+	color: #777;
+	-webkit-transition: all 0.4s ease-in-out; 
+	   -moz-transition: all 0.4s ease-in-out; 
+	    -ms-transition: all 0.4s ease-in-out;
+	     -o-transition: all 0.4s ease-in-out;  
+	        transition: all 0.4s ease-in-out; 
+}
+
+#signInForm input[type="text"]:hover, #signInForm input[type="password"]:hover,
+#signInForm input[type="text"]:focus, #signInForm input[type="password"]:focus{
+	color: black;
+}
+
+#signInForm input[type="submit"]{
+	
+	background: -webkit-linear-gradient(top, #fff, #ccc);
+	background:    -moz-linear-gradient(top, #fff, #ccc);
+	background:     -ms-linear-gradient(top, #fff, #ccc);
+	background:      -o-linear-gradient(top, #fff, #ccc);
+	background: 		linear-gradient(top, #fff, #ccc);
+	
+	border: none;
+	border-radius: 3px;
+	box-shadow: 0px 0px 4px black;
+	font-size: 15px;
+
+	cursor: pointer;
+}
+
+#signInForm input[type="submit"]:hover{
+	
+	background: -webkit-linear-gradient(top, #3BB9FF, #2B65EC);
+	background:    -moz-linear-gradient(top, #3BB9FF, #2B65EC);
+	background:	    -ms-linear-gradient(top, #3BB9FF, #2B65EC);
+	background: 	 -o-linear-gradient(top, #3BB9FF, #2B65EC);
+	background: 		linear-gradient(top, #3BB9FF, #2B65EC);
+	
+	color: white;
+
+}
+
+#signInForm #regBtn{
+	float: right;
+	margin-top: 10px;
+	background: transparent;
+	box-shadow: none;
+	color: white;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+#signInForm #regBtn:hover{
+	color: #5CB3FF;
+}
+
+
+
+
+
