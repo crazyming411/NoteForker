@@ -2,63 +2,49 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-		<script type="text/javascript">
-			onload=function(){
-				var loginForm=document.getElementById('login');
-				//var sendBtn=document.getElementById('send');
-				loginForm.onsubmit=function(e){
-					e.preventDefault();
-					var formData={};
-				 	formData.account=loginForm['account'].value;
-				 	formData.passwd =loginForm['pass'].value;
-				 	formData.index = loginForm['index'].value;
-				 	formData.maxId="";
-				 	console.log(JSON.stringify(formData));
-					$.ajax(
-						{
-							url: '/user/',
-							type: 'POST',
-							headers: {"usage":loginForm['usage'].value},
-							contentType: "application/json; charset=utf-8",
-							data: JSON.stringify(formData),
-							dataType: "json",
-							success: function(msg){
-								console.log(msg);
-							},
-							error: function(response){
-								console.log(response.responseText);
-							}
-						}
-					);
-				}
-				
-				var getter=document.getElementById('getter');
-				getter.onclick=function(){
-					$.ajax(
-							{
-								url: '/crazyming411',
-								type: 'GET',
-								error: function(msg){
-									console.log(msg);
-								},
-								success: function(msg){
-									console.log(msg);
-								}
-							}
-						);
-				}
-			}
-		</script>
+		<title id="title">NoteForker</title>
+		<link rel="stylesheet" href="./index.css" />
+		<script type="text/javascript" src="./jquery.js"></script>
+		<script type="text/javascript" src="./index.js"></script>
 	</head>
 	<body>
-		<form id="login" action="" method="POST">
-			Account:<input type="text" name="account"/><br />
-			Password:<input type="password" name="pass"/><br>
-			Index:<input type="text" name="index" /><br>
-			Usage:<input type="text" name="usage" /><br>
-			<input type="submit" value="submit" id="send" />
-		</form>
-		<input type="button" id="getter" value="Get User"/>
+		<div id="main">
+		<div id="navBar">
+			<a href="./index.html" id="home">NoteForker</a>
+			<a href="#" id="profile">Sign in</a>
+		</div>
+		
+		<div id="logo">
+			NoteForker
+		</div>
+		
+		<div id="searchField">
+			<input type="text" id="searchInput" />
+			<div id="searchBtn">l</div>
+		</div>
+		
+		<div id="signInForm">
+			<span id="Info">Hello! NoteForker</span>
+			<form id="login" method="post" action="">
+				Account<br />
+				<input type="text" name="account" /><br />
+				Password<br />
+				<input type="password" name="passwd" /><br />
+				<span id="register">
+				Confirm Password<br />
+				<input type="password" name="rePass" /><br />
+				</span>
+				<input type="submit" id="loginBtn" name="submit" value="Sign In"/> 
+				<span id="regBtn">Join Us!</span>
+			</form>
+		</div>
+
+		
+		
+		<div id="footer">
+			
+		</div>
+		<div id="mask"></div>
+		</div>
 	</body>
 </html>

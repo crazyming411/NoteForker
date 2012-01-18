@@ -6,7 +6,13 @@
         <pathsSet class="linked-hash-set">
           <string>WEB-INF/appengine-web.xml</string>
           <string>about/index.html</string>
+          <string>Glyphish.ttf</string>
+          <string>Harabara.ttf</string>
+          <string>index.css</string>
           <string>index.html</string>
+          <string>index.js</string>
+          <string>jquery.js</string>
+          <string>login.html</string>
           <string>META-INF/MANIFEST.MF</string>
           <string>WEB-INF/web.xml</string>
           <string>WEB-INF/classes/log4j.properties</string>
