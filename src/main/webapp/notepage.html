@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="content">
+		</div>
+		<script type="text/javascript" src="js/Markdown.Converter.js"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				converter = new Markdown.Converter();
+				content = document.getElementById("content");
+				htmlcode = converter.makeHtml(content.innerHTML);	
+				content.innerHTML = htmlcode;
+			}
+		</script>
+	</body>
+</html>
