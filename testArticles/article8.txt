@@ -1,0 +1,50 @@
+#Create ZIP Files in JavaScript
+
+Zip is a very useful file type if I must say most used. It is the most used file format for data compression and archiving. There are number utilities available to create/generate Zip file. Also most of the programming languages comes up with API supporting to generate Zip files. I have written a couple of articles for zipping/unzipping files in Java and PHP.
+
+While browsing internet, I came up to a very interesting website http://jszip.stuartk.co.uk/. This is JavaScript based API to generate Zip files on the fly! It’s very simple to use. All you need to do is to include the jszip javascript file in your HTML document and call its API.
+
+![](http://img.viralpatel.net/2012/01/zip-box-example.png)
+
+Let us see how to generate a simple ZIP file in JavaScript.
+
+##Hello world ZIP in JavaScript
+
+Let us create a helloworld ZIP file which contains two text files, hello1.txt and hello2.txt.
+
+###Step 1. Import jszip JavaScript
+
+Include the jszip javascript file in the HTML document where you want to generate ZIP files. You can download the jszip package and include it in HTML or directly include the jszip javascript through git repository.
+
+	<script type="text/javascript"
+			src="https://raw.github.com/Stuk/jszip/master/jszip.js"></script>
+
+###Step 2. Generate Hello world ZIP
+
+Following code snippet is HTML file which contains Javascript code to generate ZIP file.
+
+	<HTML>
+	<HEAD>
+		<script type="text/javascript" src="jszip.js"></script>
+	</HEAD>
+	 
+	<BODY>
+	 
+		<input type="button" onclick="create_zip()" value="Create Zip"></input>
+	 
+	</BODY>
+	<SCRIPT>
+	 
+	function create_zip() {
+		var zip = new JSZip();
+		zip.add("hello1.txt", "Hello First World\n");
+		zip.add("hello2.txt", "Hello Second World\n");
+		content = zip.generate();
+		location.href="data:application/zip;base64," + content;
+	}
+	 
+	</SCRIPT>
+	</HTML>
+
+In above code snippet, we have a button “Create Zip” which calls javascript function create_zip(). This function calls jszip API to generate ZIP file.
+

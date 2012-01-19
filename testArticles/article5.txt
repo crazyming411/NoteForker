@@ -1,0 +1,57 @@
+#Why Start-ups Are Scared of SOPA
+
+####Big Technology has come out against the anti-piracy legislation as censorship. Entrepreneurs have a whole different bag of worries.
+
+![](http://www.inc.com/uploaded_files/image/on-computer-thinking-pan_11785.jpg "The start-up world is split between hopeful optimism that the bill might lose momentum and an eerie fear of the landscape that could emerge if it goes into law")
+
+**Congress is debating** this week the Stop Internet Piracy Act with the goal of putting up a major roadblock that will punish copyright villains and their alibis. But entrepreneurs, small-business owners, and venture capitalists say the bill's unintended consequences will be to stifle innovation, scare away investors, and dramatically reduce the likelihood that the next big thing like YouTube or Facebook would ever get off the ground.
+
+The giants of the tech world including Google, Facebook, Yahoo, AOL, eBay, and Twitter took out an ad in the New York Times Wednesday urging Congress to reject what's become known as [SOPA][]. "Unfortunately, the bill as drafted would expose law-abiding U.S. Internet and technology companies to new and uncertain liabilities, private rights of action, and technology mandates that would require monitoring of websites," the [full-page advertisement reads][advertisement]. The major tech players doubt the effectiveness of the act on cybersecurity as well.
+
+The mood in the start-up scene, rather, is split between hopeful optimism that the bill has no chance of passing and an eerie fear of the landscape that would emerge if it did go into law. The fear is gaining traction, despite that Wednesday's Congressional hearing only pushed the bill to subcommittee. The website Lifehacker refers to SOPA as the bill "that wants to cripple your Internet," and a Twitter hashtag (#DontBreakTheInternet) is popping up.
+
+What's the worst-case scenario? Essentially every website that accepts a link or submitted content would be at risk of being shut down.
+
+In conversations with entrepreneurs and venture capitalists, many said the current Digital Millennium Copyright Act handles their concerns of piracy in an adequate and effective way because it creates a safe harbor that lets sites stay operational—as long as they respond to claims of copyright infringement.
+
+"SOPA threatens and undermines the DMCA and the foundations of the Internet, which directly negatively impacts any Internet-based business," says Brad Feld, managing director of the Foundry Group, an Internet technology venture capital firm. "The impact on innovation will be much broader than just the start-up environment. I think this will have a massive chilling effect across the entire innovation ecosystem." 
+
+And while YouTube's Google-backed legal team might be able to hold its head above water if it gets hammered with domain blocking action under the law, says Lukas Biewald, a San Francisco based entrepreneur who founded the crowd-working company CrowdFlower. But the next time two guys in a garage have an idea for any sort of user-generated-content site, there's a solid chance SOPA being in effect could scare off any potential investors.
+
+"It'll have a stifling effect on venture capital," he says. "The venture capitalists have been pretty vociferous opponents of this bill. If it's making investors nervous, that’s bad for me and other startup founders. No one would invest because of the legal liability."
+
+At the very least, investors and start-up observers say the bill is sloppily written and doesn't clearly state how sites will be targeted for shut-down—or how sites that handle millions of bits of content a day can screen each one for pirated material.
+
+Greg Foster, CEO of Brightwhistle, who was a partner with Atlanta venture capital firm Noro-Moseley Partners and formerly ran corporate development for Turner Broadcasting, wonders what would happen if his company posts a link on Twitter to a bootleg video of something like a Lady Gaga performance. Would his Twitter page be shut down? Would all of Twitter be shuttered?
+
+"Unfortunately there's a general level of ignorance among most lawmakers on how that stuff works," he says.
+
+Foster remembers walking the halls of Turner when YouTube came on the scene in the mid-2000s and watching lawyers fret over how to handle copyrighted material appearing online. Now, lawyers have way more than one site to worry about.
+
+"If you just take one slice of this start-up community and think in terms of start-up media businesses, every single last one of them, they're all adopting some sort of social media strategy, essentially allowing users a lot of freedom to do what they want to do," he says. "Any of those people look at this and say this is going to be potentially horrific. It could be bad for big guys like Google and YouTube. It's also really big for folks we haven't seen get scale yet."
+
+Andre Gharakhanian, founder of Silicon Legal Strategy, says the scariest part is that SOPA sets in stone a law that can't possibly keep up with the changing pace of technology.
+
+"It used to be that our clients who were operating on the Facebook platform were terrified that Facebook could shut them down by just flipping the switch," he says in an e-mail. "With SOPA, now any website with any user-generated content component can be shut down that quickly.  If passed, there’s going to be a chilling effect on the presence and further creation of user-generated content on the Web."
+
+The bill's definitions are so broad it would create a system that allows "for an almost unlimited class of rights holders to harass and intimidate sites," says Markham C. Erickson, a founding partner of Holch & Erickson LLP who serves as lead counsel to Google, eBay, Amazon and Skype. If you run a marketplace site, for instance, you could be shut down even if you don't have counterfeit stuff for sale—it could just be some Paul Mitchell hair products that are supposed to only be sold through a salon. Then, without due process, your site and payment systems are shut down.
+
+"It's just going to be costly. You're going to have to hire lawyers," he says. "You're potentially having your revenue taken away without even knowing why."
+
+Holly Pranger, a lawyer based in San Francisco, specializing in technology and start-up law, isn't so skeptical that adding more teeth to DMCA would have widespread effects. But it would kill particular—already not entirely legal—lines of business.
+
+"You know the websites that are operated out of China that offer a plethora of counterfeit goods like fake Juicy Couture tracksuits and Nike knock-offs, well, those are the websites that should fear the hell out of SOPA passing," says Holly Pranger, a lawyer based in San Francisco, specializing in technology and start-up law. "A typical technology business is probably never going to know the difference if SOPA passes any more than they felt a difference from the DMCA passing." 
+
+Business watchers say they are separately unnerved by how little the proposed bill will do little to stem real piracy—the illegal downloading of movies, music, and software that has frustrating creators for years. And [there's concern][]  that should legitimately pirated sites be blocked, they can simply be recreated as strictly numeric URLs (i.e., 204.12.3456), which cannot be blocked. But with the big money of Google, Facebook, and the rest of the respected movers and shakers of the Internet world lobbying against it, most are optimistic the bill in its current form will never become law.
+
+"We chose as a society not to make telephone companies liable for what happens on their networks because we did not want them listening to our phone calls and we understood that would create a cost and a liability that would make investing in that valuable piece of social infrastructure impossible," says Brad Burnham, managing partners of Union Square Ventures in New York City. "In this case we are being asked to accept responsibility for the behavior of our users to protect the narrow commercial interests of one small part of the economy."
+
+Amol Sarva, CEO of Peek, a veteran of Virgin Mobile USA, and a mentor to NYC Seed, which funds technology innovations, says after sifting through the bill's proposals, the start-up world is simply frustrated at how lawmakers seem to lack an understanding of modern technology.
+
+"I think the overwhelming consensus of everyone in tech and start-ups is: SOPA is insane and more of the usual Washington 'the Internet is a series of tubes' nonsense," he says.
+
+
+
+[SOPA]: http://en.wikipedia.org/wiki/Stop_Online_Piracy_Act
+[advertisment]: http://boingboing.net/2011/11/16/internet-giants-place-full-pag.html
+[there's concern]:http://lifehacker.com/5860205/all-about-sopa-the-bill-thats-going-to-cripple-your-internet 

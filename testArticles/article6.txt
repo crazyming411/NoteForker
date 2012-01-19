@@ -1,0 +1,223 @@
+#Essential JavaScript Namespacing Patterns
+
+![](http://addyosmani.com/blog/wp-content/uploads/2011/09/essen1.jpg)
+
+In this post, I'll be discussing both intermediate and advanced patterns and approaches for namespacing in JavaScript. We're going to begin with the latter as I believe many of my readers have some prior experience in this area. If however you're new to namespacing with the language and would like to learn more about some of the fundamentals, please feel free to skip to the section titled '[namespacing fundamentals][]' to continue reading.
+
+##What is namespacing?
+
+In many programming languages, namespacing is a technique employed to avoid collisions with other objects or variables in the global namespace. They're also extremely useful for helping organize blocks of functionality in your application into easily manageable groups that can be uniquely identified.
+
+In JavaScript, namespacing at an enterprise level is critical as it's important to safeguard your code from breaking in the event of another script on the page using the same variable or method names as you are. With the number of third-party tags regularly injected into pages these days, this can be a common problem we all need to tackle at some point in our careers. As a well-behaved 'citizen' of the global namespace, it's also imperative that you do your best to similarly not prevent other developer's scripts executing due to the same issues.
+
+ 
+Whilst JavaScript doesn't really have built-in support for namespaces like other languages, it does have objects and closures which can be used to achieve a similar effect.
+
+##Advanced namespacing patterns
+
+In this section, I'll be exploring some advanced patterns and utility techniques that have helped me when working on larger projects requiring a re-think of how application namespacing is approached. I should state that I'm not advocating any of these as *the* way to do things, but rather just ways that I've found work in practice.
+
+##Automating nested namespacing
+
+As you're probably aware, a nested namespace provides an organized hierarchy of structures in an application and an example of such a namespace could be the following: application.utilities.drawing.canvas.2d. In JavaScript the equivalent of this definition using the object literal pattern would be:
+
+	var application = {  
+				utilities:{  
+						drawing:{  
+								canvas:{  
+										2d:{  
+												/*...*/  
+										}  
+								}  
+						}  
+				}  
+	};  
+
+Wow, that's ugly.
+
+One of the obvious challenges with this pattern is that each additional depth you wish to create requires yet another object to be defined as a child of some parent in your top-level namespace. This can become particularly laborious when multiple depths are required as your application increases in complexity.
+
+How can this problem be better solved? In [JavaScript Patterns][], [Stoyan Stefanov][] presents a very-clever approach for automatically defining nested namespaces under an existing global variable using a convenience method that takes a single string argument for a nest, parses this and automatically populates your base namespace with the objects required.
+
+The method he suggests using is the following, which I've updated it to be a generic function for easier re-use with multiple namespaces:
+
+	// top-level namespace being assigned an object literal  
+	var myApp = myApp || {};  
+	// a convenience function for parsing string namespaces and  
+	// automatically generating nested namespaces  
+	function extend( ns, ns_string ) {  
+		var parts = ns_string.split('.'),  
+			parent = ns,  
+			pl, i;  
+		if (parts[0] == "myApp") {  
+			parts = parts.slice(1);  
+		}  
+		pl = parts.length;  
+		for (i = 0; i < pl; i++) {  
+			//create a property if it doesnt exist  
+			if (typeof parent[parts[i]] == 'undefined') {  
+				parent[parts[i]] = {};  
+			}  
+			parent = parent[parts[i]];  
+		}  
+		return parent;  
+	}  
+	// sample usage:  
+	// extend myApp with a deeply nested namespace  
+	var mod = extend(myApp, 'myApp.modules.module2');  
+	// the correct object with nested depths is output  
+	console.log(mod);  
+	// minor test to check the instance of mod can also  
+	// be used outside of the myApp namesapce as a clone  
+	// that includes the extensions  
+	console.log(mod == myApp.modules.module2); //true  
+	// further demonstration of easier nested namespace  
+	// assignment using extend  
+	extend(myApp, 'moduleA.moduleB.moduleC.moduleD');  
+	extend(myApp, 'longer.version.looks.like.this');  
+	console.log(myApp);
+
+Web inspector output:
+
+![](http://addyosmani.com/blog/wp-content/uploads/2011/09/ns1.png)
+
+Note how where one would previously have had to explicitly declare the various nests for their namespace as objects, this can now be easily achieved using a single, cleaner line of code. This works exceedingly well when defining purely namespaces alone, but can seem a little less flexible when you want to define both functions and properties at the same time as declaring your namespaces. Regardless, it is still incredibly powerful and I regularly use a similar approach in some of my projects.
+
+##Dependency declaration pattern
+
+In this section we're going to take a look at a minor augmentation to the nested namespacing pattern you may be used to seeing in some applications. We all know that local references to objects can decrease overall lookup times, but let's apply this to namespacing to see how it might look in practice:
+
+	// common approach to accessing nested namespaces  
+	myApp.utilities.math.fibonacci(25);  
+	myApp.utilities.math.sin(56);  
+	myApp.utilities.drawing.plot(98,50,60);  
+	// with local/cached references  
+	Var utils = myApp.utilities,  
+	maths = utils.math,  
+	drawing = utils.drawing;  
+	// easier to access the namespace  
+	maths.fibonacci(25);  
+	maths.sin(56);  
+	drawing.plot(98, 50,60);  
+	// note that the above is particularly performant when  
+	// compared to hundreds or thousands of calls to nested  
+	// namespaces vs. a local reference to the namespace 
+
+Working with a local variable here is almost always faster than working with a top-level global (eg.myApp). It's also both more convenient and more performant than accessing nested properties/sub-namespaces on every subsequent line and can improve readability in more complex applications.
+
+Stoyan recommends declaring localized namespaces required by a function or module at the top of your function scope (using the single-variable pattern) and calls this a dependancy declaration pattern. One if the benefits this offers is a decrease in locating dependencies and resolving them, should you have an extendable architecture that dynamically loads modules into your namespace when required.
+
+In my opinion this pattern works best when working at a modular level, localizing a namespace to be used by a group of methods. Localizing namespaces on a per-function level, especially where there is significant overlap between namespace dependencies would be something I would recommend avoiding where possible. Instead, define it further up and just have them all access the same reference.
+
+##Deep object extension
+
+An alternative approach to automatic namespacing is deep object extension. Namespaces defined using object literal notation may be easily extended (or merged) with other objects (or namespaces) such that the properties and functions of both namespaces can be accessible under the same namespace post-merge.
+
+This is something that's been made fairly easy to accomplish with modern JavaScript frameworks (eg. see jQuery's [$.extend][jQextend]), however, if you're looking to extend object (namespaces) using vanilla JS, the following routine may be of assistance.
+
+	// extend.js  
+	// written by andrew dupont, optimized by addy osmani  
+	function extend(destination, source) {  
+		var toString = Object.prototype.toString,  
+			objTest = toString.call({});  
+		for (var property in source) {  
+			if (source[property] && objTest == toString.call(source[property])) {  
+				destination[property] = destination[property] || {};  
+				extend(destination[property], source[property]);  
+			} else {  
+				destination[property] = source[property];  
+			}  
+		}  
+		return destination;  
+	};  
+	console.group("objExtend namespacing tests");  
+	// define a top-level namespace for usage  
+	var myNS = myNS || {};  
+	// 1. extend namespace with a 'utils' object  
+	extend(myNS, {  
+			utils:{  
+			}  
+	});  
+	console.log('test 1', myNS);  
+	//myNS.utils now exists  
+	// 2. extend with multiple depths (namespace.hello.world.wave)  
+	extend(myNS, {  
+					hello:{  
+							world:{  
+									wave:{  
+										test: function(){  
+											/*...*/  
+										}  
+									}  
+							}  
+					}  
+	});  
+	// test direct assignment works as expected  
+	myNS.hello.test1 = 'this is a test';  
+	myNS.hello.world.test2 = 'this is another test';  
+	console.log('test 2', myNS);  
+	// 3. what if myNS already contains the namespace being added  
+	// (eg. 'library')? we want to ensure no namespaces are being  
+	// overwritten during extension  
+	myNS.library = {  
+			foo:function(){}  
+	};  
+	extend(myNS, {  
+			library:{  
+					bar:function(){  
+						/*...*/  
+					}  
+			}  
+	});  
+	// confirmed that extend is operating safely (as expected)  
+	// myNS now also contains library.foo, library.bar  
+	console.log('test 3', myNS);  
+	// 4. what if we wanted easier access to a specific namespace without having  
+	// to type the whole namespace out each time?.  
+	var shorterAccess1 = myNS.hello.world;  
+	shorterAccess1.test3 = "hello again";  
+	console.log('test 4', myNS);  
+	//success, myApp.hello.world.test3 is now 'hello again'  
+	console.groupEnd();  
+
+If you do happen to be using jQuery in your application, you can achieve the exact same object namespact extensibility using $.extend as seen below:
+
+	// top-level namespace  
+	var myApp = myApp || {};  
+	// directly assign a nested namespace  
+	myApp.library = {  
+		foo:function(){ /*..*/}  
+	};  
+	// deep extend/merge this namespace with another  
+	// to make things interesting, let's say it's a namespace  
+	// with the same name but with a different function  
+	// signature: $.extend(deep, target, object1, object2)  
+	$.extend(true, myApp, {  
+		library:{  
+			bar:function(){  
+				/*..*/  
+			}  
+		}  
+	});  
+	console.log('test', myApp);  
+	// myApp now contains both library.foo() and library.bar() methods  
+	// nothing has been overwritten which is what we're hoping for.
+
+For the sake of thoroughness, please see [here](https://gist.github.com/1221980) for jQuery $.extend equivalents to the rest of the namespacing experiments found in this section.
+
+Namespacing Fundamentals
+
+Namespaces can be found in almost any serious JavaScript application. Unless you're working with a code-snippet, it's imperative that you do your best to ensure that you're implementing namespacing correctly as it's not just simple to pick-up, it'll also avoid third party code clobbering your own. The patterns we'll be examining in this section are:
+
+1.Single global variables
+2.Object literal notation
+3.Nested namespacing
+4.Immediately-invoked Function Expressions
+5.Namespace injection
+
+
+
+[namespacing fundamentals]: http://addyosmani.com/blog/essential-js-namespacing/#beginners
+[JavaScript Patterns]: http://www.amazon.com/JavaScript-Patterns-Stoyan-Stefanov/dp/0596806752
+[Stoyan Stefanov]: http://jspatterns.com/
+[jQextend]: http://api.jquery.com/jQuery.extend/

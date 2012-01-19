@@ -1,0 +1,23 @@
+#Support The Daily WTF in Supporting the Support SOPA Movement
+
+It’s January 18, 2012 and, while most of the internet has decided to blackout their sites in opposition to the Stop Online Piracy Act (SOPA), we’re taking an opposite stance and are whiting-out The Daily WTF in support of SOPA supporters.
+
+If there’s one thing that SOPA proponents like myself and SOPA opponents can agree on, it’s that PROTECT-IP and the Stop Online Piracy Act have little to do with protecting intellectual property and stopping online piracy.
+
+After all, those who choose to steal creative works like the “I Have a Dream” speech from artists like Martin Luther King Jr. can already be sued and prosecuted under existing United States copyright laws. IP thieves living overseas can already be extradited to face justice in our federal courts. And the Department of Homeland Security can already arbitrarily seize domain names that fit its arbitrary standard of violating national something-or-other.
+
+While these laws will make such acts more illegal (and therefore reduce infringement), they’re doing something much, much more important: helping dismantle DNS and the internet as we know it. And that’s something that we firmly support and can stand by.
+
+You see, back in the day, if you wanted to get online and access electronically-stored information like digitized photographs, electronic bulletin boards, and informational databanks, there was only one thing you needed: a telephone number. You’d simply fire up your favorite telecommunications program (mine was Telix), have it dial that phone number, and after a refreshing symphony of beeps and hisses, you were online.
+
+Each phone number transported you to a quaint, peaceful community that was almost entirely self-sufficient. There was no “hyperlinking” between systems: you simply wrote down the phone number, signed-off of the current system, and then dialed into the new system. And let me tell you, there are few experiences in life that can parallel the utter bliss of discovering a new phone number and a new electronic resource.
+
+And then the Information Superhighway – and its tightly integrated Domain Name System – came along, decimating these peaceful, independent communities. The bulletin boards of old were ground up and churned in the giant “dot com” machine, leaving an interconnected web of domain names. There’s no more “going online” – you’re already online – and if you want to access an electronic resource, you can use a “domain name” like TheDailyWTF.com.
+
+Domain names are highly confusing in that they not only describe what the electronic resource is, but where it is as well. Nothing else in the world works like this for obvious reasons. Could you imagine the complete confusion in day-to-day things like getting a phone number? Is that “jenny eighty-six dot com” or “jenny eighty-six dot net”? We would be in complete chaos.
+
+SOPA and PROTECT-IP offer hope in returning to the golden age of telecommunications, and to the days before the Information Superhighway polluted the online culture with this domain name nonsense. Let the Domain Name System a natural death and prepare yourself for the Internet Protocol Number (IPN) renaissance. All you need to do is start a notebook that lists electronic resource names and their corresponding IPN. And let the first entry in your notebook be
+
+The Daily WTF      74.50.110.120
+We can only hope that our legislators introduce common sense guidelines to ban HTTP (and HTML/JavaScript) as well so we can all return to the more sensible GOPHER standard.
+

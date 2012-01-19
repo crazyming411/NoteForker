@@ -1,0 +1,34 @@
+#Why SOPA Would Hurt Start-ups, Not Pirates
+
+####It's not at all clear that the bill would even succeed in catching online piracy. But it could significantly harm innovation on the Web.
+
+What's currently being called the Stop Online Piracy Act (SOPA) may very well acquire a new name if it manages to come to a vote and pass: The Bill That Broke the Internet. 
+
+And tech start-ups—as well as innovation on the Web in general—are going to be the real losers in the end, say [SOPA's biggest critics][]. I caught up with Corynne McSherry, intellectual property director for the [Electronic Frontier Foundation][], an organization that's vehemently opposed to the bill, to get her take on why it puts online businesses and tech start-ups in the crosshairs. 
+
+**Inc: Why do you see this bill as dangerous?**
+
+**McSherry**: I’ve seen some bad bills introduced in Congress but this one takes the cake. What it essentially does is set up a system where any intellectual property rights holder—and that [term] is not defined well—can identify a portion of a site that is enabling, facilitating, or taking steps to avoid confirming [copyright] infringement, whatever that means. Then they can send notice to payment processors and ad networks alerting them that the site is doing bad stuff. The processors and networks have five days before they must cut off working with the website.
+
+**Inc: Then what**?
+
+**McSherry**: The website has five days to figure out how to respond before it's cut off. If you’re YouTube, you have the resources, lawyers, and wherewithal to fight back. Now imagine you're  an everyday start-up that’s just getting off the ground. It doesn’t want to spend its money on lawyers; it needs to spend its money developing the technology that’s going to make it succeed. 
+
+**Inc: You mentioned that the vagueness of the bill is particularly troubling.**
+
+**McSherry**: Sometimes people who don’t have the IP rights in question tell a website to take something down because they don’t like content. Or maybe the person is a rights holder but doesn’t know the rules of fair use. So even if it’s an illegitimate claim, the content comes down and usually doesn’t get put back up for two weeks. This is an abuse of the takedown provisions in the current law. I have every reason to believe there would be more abuse with SOPA.
+
+**Inc: Could Congress rewrite this bill so that it protects against piracy and counterfeiting without hurting start-ups?**
+
+**McSherry**: I don’t think this is a problem that is going to be fixed by legislation. It’s not going to be addressed in courts. Past history should tell us this. For well over a decade the recording industry has been suing every file sharing site in existence. Has that stopped file sharing? Of course not.
+
+**Inc: So what’s to be done about the issue of online piracy and counterfeiting?**
+
+**McSherry**: To be honest, I tend to think we have everything in place that we need. It may be that we all have to accept that just as there is shoplifting in the world, there will be a certain amount of piracy. It’s the price of doing business.
+
+If you’re a music or a video fan, you have more access to creative content than ever before. If you’re a creator—and we’re really talking about big media here—you have more ways to get content out than ever before. That’s what we should be focusing on and supporting, not damaging the YouTube of tomorrow. That would be a really bad trade off.
+
+
+
+[SOPA's biggest critics]: http://www.inc.com/articles/201111/why-start-ups-are-scared-of-the-stop-internet-piracy-act.html
+[Electronic Frontier Foundation]: https://www.eff.org/ 

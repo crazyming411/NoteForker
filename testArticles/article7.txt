@@ -1,0 +1,71 @@
+#Faster JavaScript Memoization For Improved Application Performance
+
+![](http://addyosmani.com/blog/faster-javascript-memoization)
+
+Whilst not new by any means, memoization is a useful optimization technique for caching the results of function calls such that lengthy lookups or expensive recursive computations can be minimized where possible.
+
+The basic idea is that if you can detect an operation has already been previously completed for a specific set of input values, the stored result can instead be returned instead of repeating the operation again.
+
+Some of the problems memoization can help optimize include: recursive mathematics, algorithmic caching of canvas animation and more generally, any problems which can be expressed as a set of calls to the same function with a combination of argument values that repeat.
+
+##A Brief History
+
+If you're a history buff, you may be interested to know that the term 'memoization' was first coined in 1968 by a scientist involved in researching artificial intelligence named Donald Michie – it's based on the latin for the word memorable (memorandum). Michie proposed using memoized functions to improve the performance of machine learning and it's become more popular in recent years with the rise of functional languages such as Haskell and Erlang.
+
+There's a plethora of excellent material that's been previously written about memoization and for further reading I recommend these pieces by John Hann and Nicholas Zakas. Douglas Crockford also briefly touched upon memoization in JavaScript: The Good Parts as does Stoyan Stefanov in JavaScript patterns.
+
+##Implementing Memoization – The Basics
+
+Memoization is a concept that pre-dates the JavaScript programming language, but we can simply think of it as remembering the results for inputs of a specific value to a function.
+
+When we say 'remember', we mean utilizing a form of cache to store a record of the computed output of such specific inputs so that if a particular function is subsequently re-queried with the same input, the remembered result is returned rather than a recalculation being necessary. A lot of the time, a simple array is employed for the cache table, but a hash or map could be just as easily used.
+
+In most of the JavaScript implementations for memoization that I've reviewed, the memoization of a function (with a set of arguments) is conducted within an inner returned function whilst a signature or hash is employed for indexing the stored result.
+
+One of the more easily readable memoization implementations can be seen below. This one is by zepto.js author, Thomas Fuchs. Whilst I prefer for memoization to be kept as a utility outside of the function prototype, this implementation does do a great job of clearly demonstrating the core concepts.
+
+	Function.prototype.memoize = function(){  
+		var self = this, cache = {};  
+		return function( arg ){  
+		  if(arg in cache) {  
+			console.log('Cache hit for '+arg);  
+			return cache[arg];  
+		  } else {  
+			console.log('Cache miss for '+arg);  
+			return cache[arg] = self( arg );  
+		  }  
+		}  
+	  }  
+
+	// a hypothetical usage example  
+	// imagine having a function, fooBar, as follows  
+	function fooBar(a){ ... }  
+	// once a memoizer is available, usage is as simple as  
+	// applying it to our function as follows:  
+	var memoFooBar = fooBar.memoize();  
+	// note in other implems, this would probably be  
+	// memoize(fooBar);  
+	// we now use memFooBar for all calls to the original  
+	// function, which will now go through the memoizer instead.  
+	memoFooBar(1);  
+	// the above call isn't cached, so any computations necessary  
+	// are conducted. This result is then cached for next time.  
+	memoFooBar(1); // will now return the cached result  
+	memoFooBar(2); // whilst this will need to be calculated  
+
+The approach taken to actually caching results varies more greatly. The majority of developers prefer to maintain the cache outside of the returned function whilst others (Stoyan does this too) actually add custom properties directly to the function to be memoized.
+
+With respect to the latter, it's considered best practice by developers such as Hann to avoid interfering with a user's code where possible. If a property cache is assigned to the function instance under a particular name, one limits the code calling your memoizer from using a similarly named property on the same instance. Whilst there may be a slim chance of this overlap actually occurring, this is just something to be aware of.
+
+That said, I spent some time this week comparing a number of different memoization implementations and you may be interested to find out how a version that does hang it's cache on a user's function performs compared to those that keep it separate.
+
+##A Faster Implementation?
+
+Just for fun, I put together a derivative implementation of memoization based on some prior work by @philogb, which should work fine for most trivial problems.
+
+Some of the specific improvements I made include adding object argument testing and switching out the typeof check suggested in his post comments for determining whether or not to serialize arguments passed as objects into JSON text to use the more reliable Object.prototype.toString.call(). This update also consequently covers JSON stringifying arguments that are objeccts. For more information on this, feel free to read my post from a few weeks ago covering it.
+
+Update: Mathias Bynens and Dmitry Baranovsky have provided some further optimizations to the implementation, which I've updated most tests to now also use.
+
+Beyond this, much of the code is self-explanatory. args is a version of the function arguments that have been coerced into a JavaScript array, hash is handling serialization as covered above, fn.memoize is our cache and the final return is performing the cache lookup, storing the result of a particular set of input values if not already present.
+
